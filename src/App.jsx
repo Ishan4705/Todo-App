@@ -10,10 +10,13 @@ function App() {
 
   return (
     <>
-      <div>
+      <main>
         <TaskForm/>
         <Task/>
-      </div>
+        <Task/>
+        <Task/>
+        <Task/>
+      </main>
     </>
   );
 }

@@ -1,8 +1,8 @@
 export default function Task(){
     return(
-        <div>
+        <div className="task">
+            <input type="checkbox" />
           test 1
-          <input type="checkbox" />
         </div>
     );
 }

@@ -1,1 +1,43 @@
+body {
+    background-color: #0C0C0C;
+    color: #aaa;
+}
 
+main {
+    max-width: 50%;
+    margin: 12%  auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+form {
+
+    border: 3px solid #20212D;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+}
+
+form input[type="text"] {
+  background: none;
+  border: 0;
+  padding: 0px 8px;
+  display: block;
+  width: 100%;
+} 
+
+form button {
+    background-color: #f89900;
+    border:0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+div.task {
+    background-color: #20212D;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 5%;
+}
