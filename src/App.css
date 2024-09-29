@@ -4,7 +4,7 @@ body {
 }
 
 main {
-    max-width: 50%;
+    max-width: 80%;
     margin: 12%  auto;
 }
 
@@ -25,7 +25,7 @@ form input[type="text"] {
   border: 0;
   padding: 0px 8px;
   display: block;
-  width: 100%;
+  width: 100vh;
 } 
 
 form button {
@@ -38,6 +38,13 @@ form button {
 div.task {
     background-color: #20212D;
     border-radius: 10px;
-    padding: 5px;
+    padding: 5px 8px;
     margin-top: 5%;
+    display: flex;
+}
+
+div.task svg {
+    height: 20px;
+    margin-right: 5px;
+   
 }
