@@ -10,8 +10,11 @@ import { v4 as uuidv4 } from 'uuid';
 function App() {
 const [tasks,setTasks]=useState([]);
 function addTask (name) {
+  if (name.trim() === "") { // .trim function use to remove trailing and leading spaces from the input string
+    return;
+  }
   setTasks(prev=>{
-    return [...prev, {name:name,done:false}];
+    return [...prev, {name:name,done:false,id:uuidv4()}];
   });
 }
   return (
@@ -19,7 +22,7 @@ function addTask (name) {
       <main>
         <TaskForm onAdd={addTask}/>
         {tasks.map(task=>(
-          <Task {...task}/>
+          <Task key={task.id} {...task}/>
         ))}
       </main>
     </>
