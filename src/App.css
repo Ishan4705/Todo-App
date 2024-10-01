@@ -1,6 +1,6 @@
 body {
     background-color: #0C0C0C;
-    color: #aaa;
+    color: #fff;
 }
 
 main {
@@ -42,6 +42,7 @@ div.task {
     padding: 5px 8px;
     margin-top: 3%;
     display: flex;
+    border: 2px solid #f89900;
 }
 
 div.task svg {

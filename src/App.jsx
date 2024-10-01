@@ -30,12 +30,22 @@ function addTask (name) {
     return [...prev, {name:name,done:false,id:uuidv4()}];
   });
 }
+
+function markAsDone(taskId, isDone) {
+  setTasks(prev => {
+    return prev.map(task => 
+      task.id === taskId ? { ...task, done: isDone } : task
+    );
+  });
+}
+
   return (
     <>
       <main>
         <TaskForm onAdd={addTask}/>
         {tasks.map(task=>(
-          <Task key={task.id} {...task}/>
+          <Task key={task.id} {...task} 
+                onToggle={done =>markAsDone(task.id,done)}/>
         ))}
       </main>
     </>
