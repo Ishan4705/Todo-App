@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css'
 import Task from './Task';
 import TaskForm from './TaskForm';
@@ -9,6 +9,19 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 const [tasks,setTasks]=useState([]);
+
+useEffect(()=>{
+  if(tasks.length===0) return;
+  localStorage.setItem('tasks',JSON.stringify(tasks));
+},[tasks]);
+
+useEffect(()=>{
+const savedTasks= JSON.parse(localStorage.getItem('tasks'));
+if (savedTasks) {
+  setTasks(savedTasks); // Only set tasks if savedTasks is not null
+}
+},[]);
+
 function addTask (name) {
   if (name.trim() === "") { // .trim function use to remove trailing and leading spaces from the input string
     return;
