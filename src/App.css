@@ -79,3 +79,7 @@ div.task span:before {
 div.task.done span::before {
     width: 100%;
 }
+
+h1,h2 {
+    text-align: center;
+}

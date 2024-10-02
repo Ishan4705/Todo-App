@@ -10,6 +10,10 @@ import { v4 as uuidv4 } from 'uuid';
 function App() {
 const [tasks,setTasks]=useState([]);
 
+
+const numOfTasks=tasks.length;
+const completedTasks=tasks.filter(task=>task.done).length;
+
 useEffect(()=>{
   if(tasks.length===0) return;
   localStorage.setItem('tasks',JSON.stringify(tasks));
@@ -39,9 +43,28 @@ function markAsDone(taskId, isDone) {
   });
 }
 
+function message(){
+  const percentageDone= (completedTasks/numOfTasks) * 100;
+  if(percentageDone<=25){
+    return 'Aim to do atleast a quater of Tasks🤞🏻'
+  }
+  if (percentageDone>25 && percentageDone<=50){
+    return 'Keep going!!👍🏻'
+  }
+  if (percentageDone>50 && percentageDone!=100){
+    return 'Going Good👏🏻'
+  }
+  if (percentageDone==100){
+    return "🎉 Great job! You've completed all your tasks. Take a break or add new tasks to stay productive!";
+  }
+  
+}
+
   return (
     <>
       <main>
+        <h1>{completedTasks}/{numOfTasks}{(completedTasks>=1)?' Completed':' Not a Single task Completed'}</h1>
+        <h2>{message()}</h2>
         <TaskForm onAdd={addTask}/>
         {tasks.map(task=>(
           <Task key={task.id} {...task} 
