@@ -43,6 +43,7 @@ div.task {
     margin-top: 3%;
     display: flex;
     border: 2px solid #f89900;
+    transition: opacity 0.5s linear;
 }
 
 div.task svg {
@@ -53,4 +54,28 @@ div.task svg {
 
 div.task .Checked svg {
     fill: #f89900;
+}
+
+div.task.done {
+    opacity: 0.5;
+    border: none;
+}
+
+div.task span {
+    position: relative;
+}
+
+div.task span:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    top: 10px;
+    transition: width .3s linear;
+}
+
+div.task.done span::before {
+    width: 100%;
 }
