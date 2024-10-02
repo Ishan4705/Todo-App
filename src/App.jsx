@@ -35,6 +35,12 @@ function addTask (name) {
   });
 }
 
+function delTask(taskId) {
+  setTasks(prev => {
+    return prev.filter(task => task.id !== taskId); // Compare task.id with taskId directly
+  });
+}
+
 function markAsDone(taskId, isDone) {
   setTasks(prev => {
     return prev.map(task => 
@@ -63,11 +69,13 @@ function message(){
   return (
     <>
       <main>
-        <h1>{completedTasks}/{numOfTasks}{(completedTasks>=1)?' Completed':' Not a Single task Completed'}</h1>
-        <h2>{message()}</h2>
+        <h1>Todo List: Let's add some tasks!!</h1>
+        <h2>{completedTasks}/{numOfTasks}{(completedTasks>=1)?' Completed':' Not a Single task Completed'}</h2>
+        <h3>{message()}</h3>
         <TaskForm onAdd={addTask}/>
         {tasks.map(task=>(
           <Task key={task.id} {...task} 
+                onDelete={()=>delTask(task.id)}
                 onToggle={done =>markAsDone(task.id,done)}/>
         ))}
       </main>
