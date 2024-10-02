@@ -62,7 +62,7 @@ div.task.done {
     border: none;
 }
 
-div.task-name {
+div.task-name, div.task form {
     flex-grow: 1;
 }
 
@@ -105,4 +105,11 @@ button.trash {
 
 button.trash svg {
     fill:#999;
+}
+
+
+div.task input {
+    border: 2px solid #999;
+    border-radius: 5px;
+    padding: 2px 4px;
 }

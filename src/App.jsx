@@ -49,16 +49,24 @@ function markAsDone(taskId, isDone) {
   });
 }
 
+function renameTask(taskId, newName) {
+  setTasks(prev => {
+    return prev.map(task => 
+      task.id === taskId ? { ...task, name: newName } : task
+    );
+  });
+}
+
 function message(){
   const percentageDone= (completedTasks/numOfTasks) * 100;
   if(percentageDone<=25){
-    return 'Aim to do atleast a quater of Tasks🤞🏻'
+    return "Aim to do atleast a quater of Tasks🤞🏻";
   }
   if (percentageDone>25 && percentageDone<=50){
-    return 'Keep going!!👍🏻'
+    return "Keep going!!👍🏻";
   }
   if (percentageDone>50 && percentageDone!=100){
-    return 'Going Good👏🏻'
+    return "Going Good👏🏻";
   }
   if (percentageDone==100){
     return "🎉 Great job! You've completed all your tasks. Take a break or add new tasks to stay productive!";
@@ -69,12 +77,13 @@ function message(){
   return (
     <>
       <main>
-        <h1>Todo List: Let's add some tasks!!</h1>
+        <h1>Todo List: Let's make your day Productive!!</h1>
         <h2>{completedTasks}/{numOfTasks}{(completedTasks>=1)?' Completed':' Not a Single task Completed'}</h2>
         <h3>{message()}</h3>
         <TaskForm onAdd={addTask}/>
         {tasks.map(task=>(
           <Task key={task.id} {...task} 
+                onRename={newName=>renameTask(task.id,newName)}
                 onDelete={()=>delTask(task.id)}
                 onToggle={done =>markAsDone(task.id,done)}/>
         ))}
